@@ -1,0 +1,54 @@
+.Container {
+  width: inherit;
+}
+
+.List {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: inherit;
+  margin: 0px;
+  padding: 0px;
+}
+
+.Item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: silver;
+  color: white;
+  width: inherit;
+  list-style: none;
+  border-radius: 5px;
+  box-shadow: -5px 0px 10px -7px black, 5px 0px 10px -7px black,
+    5px 5px 15px 5px rgba(0, 0, 0, 0);
+}
+
+.Item:not(:last-of-type) {
+  margin-bottom: 10px;
+}
+
+.Description {
+  margin: 0px;
+  padding: 5px 10px;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  color: white;
+}
+
+.Button {
+  padding: 5px 10px 5px 10px;
+  background-color: darkgray;
+  border-radius: 5px;
+  color: white;
+  border: none;
+  text-transform: capitalize;
+  animation: change-color 3s linear 3 alternate;
+  cursor: pointer;
+}
+
+.Span {
+  margin-left: 5px;
+}
