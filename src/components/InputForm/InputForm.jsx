@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import FORM_VALIDATION from '../../data/formValidation.json';
 
-// import styles from './InputForm.module.css';
+import styles from './InputForm.module.css';
 
 export default class InputForm extends Component {
   static propTypes = {
@@ -29,14 +29,14 @@ export default class InputForm extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit} className="">
-        <ul className="">
+      <form onSubmit={this.handleSubmit} className={styles.Form}>
+        <ul className={styles.List}>
           {FORM_VALIDATION.map(({ type, name, pattern, title, required }) => (
-            <li key={name} className="">
-              <label className="">
+            <li key={name} className={styles.Item}>
+              <label className={styles.Label}>
                 {name}
                 <input
-                  className=""
+                  className={styles.Input}
                   type={type}
                   name={name}
                   pattern={pattern}
@@ -49,7 +49,7 @@ export default class InputForm extends Component {
             </li>
           ))}
         </ul>
-        <button type="submit" className="">
+        <button type="submit" className={styles.Button}>
           add contact
         </button>
       </form>
