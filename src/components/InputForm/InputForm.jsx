@@ -6,11 +6,6 @@ import FORM_VALIDATION from '../../data/formValidation.json';
 import styles from './InputForm.module.css';
 
 export default class InputForm extends Component {
-  static propTypes = {
-    name: PropTypes.string,
-    number: PropTypes.string,
-  };
-
   state = {
     name: '',
     number: '',
@@ -31,7 +26,7 @@ export default class InputForm extends Component {
     return (
       <form onSubmit={this.handleSubmit} className={styles.Form}>
         <ul className={styles.List}>
-          {FORM_VALIDATION.map(({ type, name, pattern, title, required }) => (
+          {FORM_VALIDATION.map(({ type, name, pattern, title }) => (
             <li key={name} className={styles.Item}>
               <label className={styles.Label}>
                 {name}
@@ -43,7 +38,6 @@ export default class InputForm extends Component {
                   title={title}
                   value={this.state[name]}
                   onChange={this.handleChange}
-                  required
                 />
               </label>
             </li>
@@ -57,9 +51,6 @@ export default class InputForm extends Component {
   }
 }
 
-FORM_VALIDATION.PropTypes = {
-  type: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  pattern: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
+InputForm.propTypes = {
+  onAddContact: PropTypes.func.isRequired,
 };
