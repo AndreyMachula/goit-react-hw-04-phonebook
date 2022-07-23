@@ -26,7 +26,7 @@ export default class InputForm extends Component {
     return (
       <form onSubmit={this.handleSubmit} className={styles.Form}>
         <ul className={styles.List}>
-          {FORM_VALIDATION.map(({ type, name, pattern, title }) => (
+          {FORM_VALIDATION.map(({ type, name, pattern, title, placeholder, required }) => (
             <li key={name} className={styles.Item}>
               <label className={styles.Label}>
                 {name}
@@ -36,8 +36,10 @@ export default class InputForm extends Component {
                   name={name}
                   pattern={pattern}
                   title={title}
+                  placeholder={placeholder}
                   value={this.state[name]}
                   onChange={this.handleChange}
+                  required
                 />
               </label>
             </li>
