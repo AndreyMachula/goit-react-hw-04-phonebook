@@ -30,7 +30,7 @@ class App extends Component {
   }
 
   addContact = ({ name, number }) => {
-    this.state.contacts.some(contact => name === contact.name)
+    this.state.contacts.some(contact => name.toLowerCase() === contact.name.toLowerCase())
       ? alert(`${name} is already in contacts`)
       : this.setState(({ contacts }) => ({
           contacts: [...contacts, { name, number, id: nanoid() }],
