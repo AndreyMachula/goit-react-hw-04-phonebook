@@ -1,30 +1,34 @@
-import { Component } from 'react';
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import FORM_VALIDATION from '../../data/formValidation.json';
 
 import styles from './InputForm.module.css';
 
-export default class InputForm extends Component {
-  state = {
-    name: '',
-    number: '',
-  };
+const InputForm = ({onAddContact}) => {
+  const [name, setName] = useState('');
+  const [number, setNumber] = useState('')
+  // state = {
+  //   name: '',
+  //   number: '',
+  // };
 
-  handleChange = event => {
+  const handleChange = event => {
     const { name, value } = event.currentTarget;
-    this.setState({ [name]: value });
+    name === 'name' && setName(value);
+    name === 'number' && setNumber(value);
   };
 
-  handleSubmit = event => {
+  const handleSubmit = event => {
     event.preventDefault();
-    this.props.onAddContact(this.state);
-    this.setState({ name: '', number: '' });
+
+    onAddContact({ name, number });
+    setName('');
+    setNumber('');
   };
 
-  render() {
     return (
-      <form onSubmit={this.handleSubmit} className={styles.Form}>
+      <form onSubmit={handleSubmit} className={styles.Form}>
         <ul className={styles.List}>
           {FORM_VALIDATION.map(({ type, name, pattern, title, placeholder, required }) => (
             <li key={name} className={styles.Item}>
@@ -37,8 +41,8 @@ export default class InputForm extends Component {
                   pattern={pattern}
                   title={title}
                   placeholder={placeholder}
-                  value={this.state[name]}
-                  onChange={this.handleChange}
+                  value={name[name]}
+                  onChange={handleChange}
                   required
                 />
               </label>
@@ -50,9 +54,11 @@ export default class InputForm extends Component {
         </button>
       </form>
     );
-  }
+  
 }
 
 InputForm.propTypes = {
   onAddContact: PropTypes.func.isRequired,
 };
+
+export default InputForm
